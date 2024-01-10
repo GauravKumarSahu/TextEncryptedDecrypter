@@ -5,6 +5,8 @@ import pyperclip
 
 encrypted_text = ""
 
+#copying to clipboard
+
 def encrypted_copy():
     if label.cget('text') == "Click encrypt.":
         pyperclip.copy("")
@@ -17,10 +19,12 @@ def decrypted_copy():
     else:
         pyperclip.copy(label2.cget('text'))
 
+#encryption and decryption
+
 def encrypted():
     global encrypted_text
     encrypted_text = ""
-    for letter in decrypted_text.get():
+    for letter in entry_field.get():
         index = decrypted_letters.index(letter)
         encrypted_text += encrypted_letters[index]
     label.configure(text = encrypted_text)
@@ -35,6 +39,7 @@ def decrypted():
     label2.configure(text = decrypted_text)
     decrypted_text = ""
     
+#encryption widgets
 
 decrypted_letters = list(string.ascii_letters + string.digits + string.punctuation + " ")
 encrypted_letters = decrypted_letters.copy()
